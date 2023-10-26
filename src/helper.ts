@@ -6,7 +6,7 @@
 import { window, commands, ExtensionContext } from 'vscode';
 
 type Command = {
-	key: string;
+	key?: string; // keybinding, probably useless
 	id: string;
 };
 
@@ -33,6 +33,7 @@ let driver: Driver = {
 
 	},
 	"Search and replace": {
+		"Find": {  id: "actions.find" },
 	},
 	"Rich languages editing": {
 	},
