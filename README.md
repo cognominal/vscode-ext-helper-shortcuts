@@ -26,7 +26,9 @@ so you can customize it per [profile](https://code.visualstudio.com/docs/editor/
 ## TBD
 
 - fill the driver structure. So far only the two first categories have been partially fille.
--Add the keyboard shortcuts. That's the whole purpose of the extension
+- Add the keyboard shortcuts. That's the whole purpose of the extension
+- Grey out, the command when the [when clause context](https://code.visualstudio.com/api/references/when-clause-contexts) is false
+- ⌥ + click Insert cursor is not a command but should appear in the menu
 
 ## Extension Settings [TBD]
 
