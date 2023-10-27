@@ -19,22 +19,23 @@ type Driver = {
 };
 
 
+//  { key: "", id: "" },
 let driver: Driver = {
 	"General": {
-		"Show Command Palette": { key: "Ctrl+Shift+P", id: "workbench.action.showCommands" },
-		"File: open file ": { key: "Ctrl+Shift+P", id: "workbench.action.files.openFile" },
+		"Show Command Palette": { key: "F1", id: "workbench.action.showCommands" },
+		"File: open file ": { key: "⌘P", id: "workbench.action.files.openFile" },
 
 	},
 	"Basic Editing": {
-		"Cut selection. Cut line on empty selection": { key: "Ctrl+Shift+P", id: "editor.action.clipboardCutAction" },
-		"File: open file ": { key: "Ctrl+Shift+P", id: "editor.action.clipboardCopyAction" },
+		"Cut selection. Cut line on empty selection": { key: "⌘X", id: "editor.action.clipboardCutAction" },
+		"Copy Selection": { key: "⌘C", id: "editor.action.clipboardCopyAction" },
 	},
 	"Multi-cursor and selection ": {
-		"Insert cursor above": { id: "editor.action.insertCursorAbove" },
-		"Insert cursor below": { id: "editor.action.insertCursorBelow" },
+		"Insert cursor above": { key: "⌥⌘↑", id: "editor.action.insertCursorAbove" },
+		"Insert cursor below": { key: "⌥⌘↓", id: "editor.action.insertCursorBelow" },
 	},
 	"Search and replace": {
-		"Find": {  id: "actions.find" },
+		"Find": {  key: "⌘F", id: "actions.find" },
 	},
 	"Rich languages editing": {
 		"Show all symbols": { id: "workbench.action.gotoSymbol" },
