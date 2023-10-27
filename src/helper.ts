@@ -19,12 +19,12 @@ type Driver = {
 };
 
 
-//  { key: "", id: "" },
+//  "": { key: "", id: "" },
 let driver: Driver = {
 	"General": {
 		"Show Command Palette": { key: "F1", id: "workbench.action.showCommands" },
 		"File: open file ": { key: "⌘P", id: "workbench.action.files.openFile" },
-
+		
 	},
 	"Basic Editing": {
 		"Cut selection. Cut line on empty selection": { key: "⌘X", id: "editor.action.clipboardCutAction" },
@@ -33,6 +33,31 @@ let driver: Driver = {
 	"Multi-cursor and selection ": {
 		"Insert cursor above": { key: "⌥⌘↑", id: "editor.action.insertCursorAbove" },
 		"Insert cursor below": { key: "⌥⌘↓", id: "editor.action.insertCursorBelow" },
+		"": { key: "", id: "" },
+		// ⇧⌥I 
+		"Insert cursor at end of each line selected": { key: "⇧⌥I", id: "editor.action.insertCursorAtEndOfEachLineSelected" },
+		// ⌘L 
+		"Select current line": { key: "⌘L", id: "editor.action.selectLines" },
+		// ⇧⌘L 
+		"Select all occurrences of current selection": { key: "⇧⌘L", id: "editor.action.selectHighlights" },
+		// ⌘F2 
+		"Select all occurrences of current word": { key: "⌘F2", id: "editor.action.changeAll" },
+		// ⌃⇧⌘→ / ← 
+		"Expand selection": { key: "⌃⇧⌘→", id: "editor.action.smartSelect.expand" },
+		"Shrink selection": { key: "⌃⇧⌘→", id: "editor.action.smartSelect.shrink" },
+		// ⇧⌥ + "drag mouse Column (box) selection":
+		// ⇧⌥⌘↑ 
+		"Column (box) selection up": { key: "⇧⌥⌘↑", id: "editor.action.insertCursorAbove" },
+		// ⇧⌥⌘↓ 
+		"Column (box) selection down": { key: "⇧⌥⌘↓", id: "editor.action.insertCursorBelow" },
+		// ⇧⌥⌘←  
+		"Column (box) selection left": { key: "⇧⌥⌘←", id: "editor.action.columnSelectLeft" },
+		// ⇧⌥⌘→ 
+		"Column (box) selection right": { key: "⇧⌥⌘→", id: "editor.action.columnSelectRight" },
+		// ⇧⌥⌘PgUp 
+		"Column (box) selection page up": { key: "⇧⌥⌘PgUp", id: "editor.action.columnSelectPageUp"},
+		// ⇧⌥⌘PgDn 
+		"Column (box) selection page down": { key: "⇧⌥⌘PgDn", id: "editor.action.columnSelectPageDown" }, 
 	},
 	"Search and replace": {
 		"Find": {  key: "⌘F", id: "actions.find" },
