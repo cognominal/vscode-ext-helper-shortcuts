@@ -3,11 +3,16 @@
   "displayName": "helper-shortcuts",
   "description": "helper shortcuts",
   "version": "0.0.1",
+  "keywords": [
+    "helper",
+    "shortcuts",
+    "quickpick"
+  ],
   "engines": {
     "vscode": "^1.83.0"
   },
   "categories": [
-    "Other"
+    "Other", "Keymaps"
   ],
   "activationEvents": [],
   "main": "./out/extension.js",
