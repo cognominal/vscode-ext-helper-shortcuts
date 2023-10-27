@@ -30,12 +30,14 @@ let driver: Driver = {
 		"File: open file ": { key: "Ctrl+Shift+P", id: "editor.action.clipboardCopyAction" },
 	},
 	"Multi-cursor and selection ": {
-
+		"Insert cursor above": { id: "editor.action.insertCursorAbove" },
+		"Insert cursor below": { id: "editor.action.insertCursorBelow" },
 	},
 	"Search and replace": {
 		"Find": {  id: "actions.find" },
 	},
 	"Rich languages editing": {
+		"Show all symbols": { id: "workbench.action.gotoSymbol" },
 	},
 	"Navigation": {
 	},
@@ -72,7 +74,7 @@ export function helperShortcuts(context: ExtensionContext) {
 function subQuickPick(strpicked : string) {
 	let picked: Category = driver[strpicked];
 	const subquickPick = window.createQuickPick();
-	subquickPick.items = Object.keys(driver[strpicked]).map(label => ({ label }));
+	subquickPick.items = Object.keys(picked).map(label => ({ label, description: picked[label].key }));
 	subquickPick.onDidChangeSelection(selection => {
 		
 		if (selection[0]) {
