@@ -4,10 +4,15 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { window, commands, ExtensionContext } from 'vscode';
+const os = require('os');
+let platform = os.platform();
+
 
 type Command = {
-	key?: string; // keybinding, probably useless
-	id: string;
+	key?: string; // keybinding for macos
+	lkey?: string; // keybinding for linux
+	wkey?: string; // keybinding for windows
+	id?: string;   // command id
 };
 
 type Category = {
@@ -19,11 +24,11 @@ type Driver = {
 };
 
 
-//  "": { key: "", id: "" },
+
 let driver: Driver = {
 	"General": {
 		"Show Command Palette": { key: "F1", id: "workbench.action.showCommands" },
-		"File: open file ": { key: "⌘P", id: "workbench.action.files.openFile" },
+		"File: open file ": { key: "⌘P", wkey: "Ctrl+P",  id:"workbench.action.files.openFile" },
 		
 	},
 	"Basic Editing": {
@@ -76,6 +81,12 @@ let driver: Driver = {
 	"Debug": {
 	},
 	"Integrated terminal": {
+		// ⌃` Show integrated terminal
+		// ⌃⇧` Create new terminal
+		// ⌘C Copy selection
+		// ⌘↑ / ↓ Scroll up/down
+		// PgUp / PgDn Scroll page up/down
+		// ⌘Home / End Scroll to top/bottom		
 	}
 }
 
@@ -100,12 +111,29 @@ export function helperShortcuts(context: ExtensionContext) {
 function subQuickPick(strpicked : string) {
 	let picked: Category = driver[strpicked];
 	const subquickPick = window.createQuickPick();
-	subquickPick.items = Object.keys(picked).map(label => ({ label, description: picked[label].key }));
+	subquickPick.items = Object.keys(picked).map(label => {
+		let description: string = "";
+		if (platform == "darwin") {
+			description = picked[label].key || "";
+		} else if (platform == "win32") {
+			description = picked[label].wkey || "";
+		} else if (platform == "linux") {
+			// if missing linux key, use windows key if any
+			description = picked[label].lkey || picked[label].wkey || "";
+		}
+		return { label, description }
+	}
+	);
 	subquickPick.onDidChangeSelection(selection => {
 		
 		if (selection[0]) {
 			let strpicked: string = selection[0].label
-			commands.executeCommand(picked[strpicked].id)
+			if (picked[strpicked].id) {
+				const commandId = picked[strpicked].id;
+				if (commandId) {
+					commands.executeCommand(commandId);
+				}
+			}
 		}
 	});
 	
