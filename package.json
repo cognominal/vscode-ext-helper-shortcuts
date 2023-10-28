@@ -3,6 +3,12 @@
   "displayName": "helper-shortcuts",
   "description": "helper shortcuts",
   "version": "0.0.1",
+  "publisher": "cognominal",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cognominal/vscode-ext-helper-shortcuts"
+  },
+  "license": "MIT",
   "keywords": [
     "helper",
     "shortcuts",
