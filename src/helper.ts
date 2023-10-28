@@ -195,6 +195,8 @@ let driver: Driver = {
 export function helperShortcuts(context: ExtensionContext) {
 	const quickPick = window.createQuickPick();
 	quickPick.items = Object.keys(driver).map(label => ({ label }));
+	quickPick.placeholder = 'Please select an category to get the shortcuts';
+
 
 	quickPick.onDidChangeSelection(selection => {
 		quickPick.hide();
@@ -212,6 +214,7 @@ export function helperShortcuts(context: ExtensionContext) {
 function subQuickPick(strpicked: string) {
 	let picked: Category = driver[strpicked];
 	const subquickPick = window.createQuickPick();
+	subquickPick.placeholder = 'select and execute a command';
 	subquickPick.items = Object.keys(picked).map(label => {
 		let description: string = "";
 		if (platform == "darwin") {
