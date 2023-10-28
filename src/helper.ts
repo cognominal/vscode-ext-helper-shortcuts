@@ -27,7 +27,7 @@ type Driver = {
 
 let driver: Driver = {
 	"General": {
-        "Show Command Palette": { key: "F1", wkey: "F1", id: "workbench.action.showCommands" },
+§        "Show Command Palette": { key: "F1", wkey: "F1", id: "workbench.action.showCommands" },
         "File: open file ": { key: "⌘P", wkey: "Ctrl+P", id: "workbench.action.files.openFile" },
         "Quick Open, Go to File…": { key: "⌘P", wkey: "Ctrl+P", id: "workbench.action.quickOpen" },
         "New window/instance": { key: "⌘N", wkey: "Ctrl+Shift+N", id: "workbench.action.newWindow" },
