@@ -8,7 +8,7 @@ import { helperShortcuts } from './helper';
 
 
 export function activate(context: vscode.ExtensionContext) {
-	registerCommand(context, 'helper-shortcuts.shortcuts', helperShortcuts);
+	registerCommand(context, 'shortcuts.shortcuts', helperShortcuts);
 
 }
 

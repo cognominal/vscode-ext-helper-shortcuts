@@ -33,8 +33,11 @@ let driver: Driver = {
         "New window/instance": { key: "⌘N", wkey: "Ctrl+Shift+N", id: "workbench.action.newWindow" },
         "Close window/instance": { key: "⌘W", wkey: "Ctrl+Shift+W", id: "workbench.action.closeWindow" },
         "User Settings": { key: "⌘,", wkey: "Ctrl+,", id: "workbench.action.openSettings" },
-        "Keyboard Shortcuts": { key: "⌘K ⌘S", wkey: "Ctrl+K Ctrl+S", id: "workbench.action.openGlobalKeybindings" },
-    },
+        "PDF : keyboard Shortcuts": { key: "⌘K ⌘S", wkey: "Ctrl+K Ctrl+S", id: "workbench.action.openGlobalKeybindings" },
+		"Reopen recent session window": { key: "⌃R", wkey: "Ctrl+R", id: "workbench.action.openRecent" },
+		"Focus to active session window": {  key: "⌃W", wkey: "Ctrl+W", id: "workbench.action.switchWindow" }
+	 },
+		// "workbench.action.quickOpenNavigateNextInRecentFilesPicker" }
 	"Basic Editing": {
 		"Cut selection. Cut line on empty selection": { key: "⌘X", wkey: "Ctrl+X", id: "editor.action.clipboardCutAction" },
 		"Copy Selection": { key: "⌘C", wkey: "Ctrl+C", id: "editor.action.clipboardCopyAction" },
@@ -122,7 +125,7 @@ let driver: Driver = {
 		"Go forward": { key: "⌃⇧-", wkey: "Ctrl+Shift+-", id: "workbench.action.navigateForward" },
 		"Toggle Tab moves focus": { key: "⌃⇧M", wkey: "Ctrl+Shift+M", id: "workbench.action.toggleTabFocusMode" },
 	},
-	"Editor management": {
+	"Editor/view management": {
 		"Close editor": { key: "⌘W", wkey: "Ctrl+W", id: "workbench.action.closeActiveEditor" },
 		"Close folder": { key: "⌘K F", wkey: "Ctrl+K F", id: "workbench.action.closeFolder" },
 		"Split editor": { key: "⌘\\", wkey: "Ctrl+\\", id: "workbench.action.splitEditor" },
@@ -134,6 +137,12 @@ let driver: Driver = {
 		"Move editor right": { key: "⌘K ⇧⌘→", wkey: "Ctrl+K Shift+Ctrl+→", id: "workbench.action.moveEditorRightInGroup" },
 		"Move active editor group left": { key: "⌘K ⌘←", wkey: "Ctrl+K Ctrl+←", id: "workbench.action.moveActiveEditorGroupLeft" },
 		"Move active editor group right": { key: "⌘K ⌘→", wkey: "Ctrl+K Ctrl+→", id: "workbench.action.moveActiveEditorGroupRight" },
+		"Increase editor group size": { key: "⌘K ⌘=", wkey: "Ctrl+K Ctrl+=", id: "workbench.action.increaseViewSize" },
+		"Decrease editor group size": { key: "⌘K ⌘-", wkey: "Ctrl+K Ctrl+-", id: "workbench.action.decreaseViewSize" },
+		"Maximize editor group size": { key: "⌘K ⌘⌘", wkey: "Ctrl+K Ctrl+⌘", id: "workbench.action.maximizeEditor" },
+		"Minimize other editor groups": { key: "⌘K ⌘1", wkey: "Ctrl+K Ctrl+1", id: "workbench.action.minimizeOtherEditors" },
+		"Increase size of current editor group": { key: "⌘=", wkey: "Ctrl+=", id: "workbench.action.increaseViewSize" },
+		"Increase Editor Width": { key: "⌘=", wkey: "Ctrl+=", id: "workbench.action.increaseViewWidth" },
 	},
 		"File management": {
 		"New File": { key: "⌘N", wkey: "Ctrl+N", id: "explorer.newFile" },
@@ -188,6 +197,7 @@ let driver: Driver = {
 		"Scroll page down": { key: "PgDn", wkey: "PgDn", id: "workbench.action.terminal.scrollDownPage" },
 		"Scroll to top": { key: "⌘Home", wkey: "Ctrl+Home", id: "workbench.action.terminal.scrollToTop" },
 		"Scroll to bottom": { key: "⌘End", wkey: "Ctrl+End", id: "workbench.action.terminal.scrollToBottom" },
+		"focus next terminal group": {  id: "workbench.action.terminal.focusNext" }
 	},	
 }
 
@@ -214,7 +224,7 @@ export function helperShortcuts(context: ExtensionContext) {
 function subQuickPick(strpicked: string) {
 	let picked: Category = driver[strpicked];
 	const subquickPick = window.createQuickPick();
-	subquickPick.placeholder = 'select and execute a command';
+	subquickPick.placeholder = 'Select and execute a command';
 	subquickPick.items = Object.keys(picked).map(label => {
 		let description: string = "";
 		if (platform == "darwin") {
